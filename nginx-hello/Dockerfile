@@ -1,5 +1,13 @@
+
 FROM ubuntu:latest
-CMD apt-get update -y
-CMD apt-get install nginx -y
+
+RUN apt-get update
+RUN apt install nginx -y
+
+WORKDIR /app
+COPY . .
+
+COPY index.html /usr/share/nginx/html/
+COPY default /etc/nginx/sites-available/
 
 EXPOSE 80
