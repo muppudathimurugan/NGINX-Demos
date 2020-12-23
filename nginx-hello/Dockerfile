@@ -1,4 +1,5 @@
-FROM nginx:mainline-alpine
-RUN rm /etc/nginx/conf.d/*
-ADD hello.conf /etc/nginx/conf.d/
-ADD index.html /usr/share/nginx/html/
+FROM nginx:latest
+WORKDIR /app
+COPY . .
+CMD cp index.html /usr/share/nginx/html/
+CMD cp default /etc/nginx/conf.d/
